@@ -1,43 +1,43 @@
-# Template de Relatório do LPS
+# LPS Report Template
 
-Este repositório contém o modelo (template) em LaTeX para a elaboração de relatórios técnicos e de acompanhamento de projetos do Laboratório de Processamento de Sinais (LPS) da COPPE/UFRJ. O template foi desenvolvido para padronizar e facilitar a compilação de documentos do laboratório.
+This repository contains the LaTeX template for preparing technical and project progress reports for the Signal Processing Laboratory (LPS) of COPPE/UFRJ. The template was designed to standardize and simplify the compilation of the laboratory's documents.
 
-## Estrutura do Repositório
+## Repository Structure
 
-O projeto está organizado com a seguinte estrutura de arquivos e diretórios principais:
+The project is organized with the following main directory and file structure:
 
-* **`main.tex`**: Arquivo principal do documento LaTeX, responsável por coordenar a estrutura global, incluindo metadados, capítulos e referências bibliográficas.
-* **`metadatas/`**: Diretório contendo arquivos de configuração e dados específicos do relatório:
-  * `infos.tex`: Informações cadastrais do projeto, tais como título, coordenadores, participantes (professores, pesquisadores, discentes de pós-graduação e graduação) e laboratórios parceiros.
-  * `packages.tex`: Inclusão e configuração de pacotes adicionais do LaTeX.
-  * `abreviations.tex`: Definições de siglas, abreviações e símbolos utilizados no texto.
-  * `bibliography.bib`: Arquivo contendo as referências bibliográficas no formato BibTeX.
-* **`chapters/`**: Pasta destinada aos capítulos do relatório. Por exemplo, `chapters/chapter_01/main.tex` contém o conteúdo do primeiro capítulo.
-* **`template/`**: Arquivos de classe do LaTeX (`coppe.cls`), arquivos BST de estilos bibliográficos e imagens de logotipos oficiais.
-* **`Makefile`**: Script de automação de compilação.
+* **`main.tex`**: The main LaTeX document file, responsible for coordinating the overall structure, including metadata, chapters, and bibliographic references.
+* **`metadatas/`**: Directory containing configuration files and report-specific data:
+  * `infos.tex`: Project registration information, such as title, coordinators, participants (professors, researchers, graduate and undergraduate students), and partner laboratories.
+  * `packages.tex`: Inclusion and configuration of additional LaTeX packages.
+  * `abreviations.tex`: Definitions of acronyms, abbreviations, and symbols used throughout the text.
+  * `bibliography.bib`: BibTeX file containing bibliographic references.
+* **`chapters/`**: Directory intended for report chapters. For example, `chapters/chapter_01/main.tex` contains the content of the first chapter.
+* **`template/`**: LaTeX class files (`coppe.cls`), BST bibliographic style files, and official logo images.
+* **`Makefile`**: Compilation automation script.
 
-## Instruções de Compilação
+## Compilation Instructions
 
-A compilação do relatório pode ser realizada por meio do utilitário `make` via linha de comando. Recomenda-se possuir uma distribuição LaTeX (como TeX Live ou MacTeX) previamente instalada e configurada no PATH do seu sistema operacional.
+The report can be compiled using the `make` utility via command line. It is recommended to have a LaTeX distribution (such as TeX Live or MacTeX) installed and configured in your system's PATH.
 
-### Compilar o Relatório
+### Compile the Report
 
-Para efetuar a compilação completa do documento LaTeX e gerar o arquivo PDF final, execute o seguinte comando no diretório raiz do repositório:
+To perform a complete compilation of the LaTeX document and generate the final PDF file, run the following command in the root directory of the repository:
 
 ```bash
 make
 ```
 
-Este comando aciona a sequência apropriada de ferramentas (`pdflatex`, `makeindex` para listas de siglas e símbolos, `bibtex` para referências e novas chamadas ao `pdflatex` para resolução de referências cruzadas), gerando o arquivo `main.pdf`.
+This command triggers the appropriate sequence of tools (`pdflatex`, `makeindex` for lists of abbreviations and symbols, `bibtex` for references, and subsequent calls to `pdflatex` to resolve cross-references), generating the `main.pdf` file.
 
-### Limpar Arquivos Temporários
+### Clean Temporary Files
 
-Durante o processo de compilação, diversos arquivos auxiliares são criados (por exemplo, `.aux`, `.log`, `.toc`, `.lof`, `.lot`). Para excluir todos os arquivos temporários e o arquivo PDF compilado, mantendo a estrutura do diretório limpa, execute:
+During the compilation process, several auxiliary files are created (e.g., `.aux`, `.log`, `.toc`, `.lof`, `.lot`). To delete all temporary files and the compiled PDF, keeping the directory structure clean, execute:
 
 ```bash
 make clean
 ```
 
-## Customização de Informações
+## Information Customization
 
-Para adaptar o relatório com os dados específicos de seu projeto e equipe, edite o arquivo [infos.tex](file:///Users/jodafons/Desktop/codes/latex-report-template/metadatas/infos.tex), preenchendo as macros de título, vigência, código de convênio, equipe executora e laboratórios associados.
+To adapt the report with the specific data of your project and team, edit the file [infos.tex](file:///Users/jodafons/Desktop/codes/latex-report-template/metadatas/infos.tex), filling in the macros for title, duration, agreement code, project team, and associated laboratories.
