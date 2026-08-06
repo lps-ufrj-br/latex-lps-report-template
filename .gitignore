@@ -1,0 +1,26 @@
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Docker build sentinel
+.docker-built
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.nlo
+*.nls
+*.ilg
+*.syx
+*.abx
+*.los
+*.lab
+
+# LaTeX PDF output
+*.pdf
