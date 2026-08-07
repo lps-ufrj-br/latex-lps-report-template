@@ -32,6 +32,9 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \setboolean{maledoc}{false}
 \newif\if@english\@englishfalse
 
+\DeclareOption{english}{\@englishtrue}
+\DeclareOption{portuguese}{\@englishfalse}
+\DeclareOption{portugues}{\@englishfalse}
 
 \ProcessOptions\relax
 \if@english
@@ -107,7 +110,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 \global\def\@projectdepartment{Departamento}
 \global\def\@projecttitle{TÍTULO DO PROJETO}
 \global\def\@reportcode{Código do Relatório}
-\global\def\@coordinatorsignature{template/logos/signature.pdf}
+\global\def\@coordinatorsignature{template/logos/my_signature.pdf}
 
 \def\@makechapterhead#1{%
   {\parindent \z@ \raggedright \normalfont
@@ -236,7 +239,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
 
     %% Report Version/Edition (Top Center)
     \node[anchor=north, yshift=-0.8cm, align=center] at (current page.north) {
-        {\fontsize{14}{16}\selectfont\bfseries\textcolor{white}{\MakeUppercase{Edição \@reportversion}}}\\[0.1cm]
+        {\fontsize{14}{16}\selectfont\bfseries\textcolor{white}{\MakeUppercase{\editionname\ \@reportversion}}}\\[0.1cm]
         {\fontsize{12}{14}\selectfont\textcolor{white}{COPPETEC \@coppetecproject\ | EMBRAPII \@embrapiiproject}}
     };
 
@@ -271,7 +274,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
             \begin{tabular}[b]{@{}l@{}} 
                 \textbf{\footnotesize \textcolor{myblue}{Laboratório de Processamento de Sinais - LPS/COPPE}} \\ 
                 \textbf{\footnotesize \textcolor{myblue}{Universidade Federal do Rio de Janeiro}} \\
-                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \number\day\ de \local@monthname\ de \number\year}}
+                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \local@date}}
             \end{tabular}
         \end{tabular}
     };
@@ -286,7 +289,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   
   
   \vspace*{4mm}
-  \noindent RELATÓRIO TÉCNICO SUBMETIDO AO CORPO DE AVALIAÇÃO DA PETROBRAS, COMO PARTE INTEGRANTE DAS ATIVIDADES DE PESQUISA, DESENVOLVIMENTO E INOVAÇÃO REFERENTES AO PROJETO SUPRACITADO. 
+  \frontpage@maintext 
   
 
   \vspace{1cm}
@@ -294,18 +297,18 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \noindent
   \begin{tabularx}{\textwidth}{|l|X|}
     \hline
-    \textbf{Coordenador} & \@coordinator \\ \hline
+    \textbf{\coordinatorname} & \@coordinator \\ \hline
     %\textbf{Subcoordenador} & \@subcoordinator \\ \hline
-    \textbf{Código do relatório} & \@reportcode \\ \hline
-    \textbf{Versão do relatório} & \@reportversion \\ \hline
-    \textbf{Número do projeto Coppetec} & \@coppetecproject \\ \hline
-    \textbf{Número do projeto Embrapii} & \@embrapiiproject \\ \hline
-    \textbf{Nº Termo de Cooperação} & \@cooperationterm \\ \hline
-    \textbf{Interlocutor} & \@interlocutor \\ \hline
-    \textbf{Fase associada} & \@projectphase \\ \hline
-    \textbf{Duração do projeto} & \@projectduration \\ \hline
+    \textbf{\reportcodename} & \@reportcode \\ \hline
+    \textbf{\reportversionname} & \@reportversion \\ \hline
+    \textbf{\coppetecprojectname} & \@coppetecproject \\ \hline
+    \textbf{\embrapiiprojectname} & \@embrapiiproject \\ \hline
+    \textbf{\cooperationtermname} & \@cooperationterm \\ \hline
+    \textbf{\interlocutorname} & \@interlocutor \\ \hline
+    \textbf{\projectphasename} & \@projectphase \\ \hline
+    \textbf{\projectdurationname} & \@projectduration \\ \hline
     %\textbf{Departamento} & \@projectdepartment \\ \hline
-    \textbf{Cliente final} & \@finalclient \\ \hline
+    \textbf{\finalclientname} & \@finalclient \\ \hline
   \end{tabularx}  \vspace{0.5cm}
 
   \vspace{2cm}
@@ -315,7 +318,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
       \rule{10cm}{0.4pt}\\
       \vspace{0.2cm}
       \textbf{\@coordinator}\\
-      Coordenador do Projeto
+      \coordinatortitle
   \end{center}
   \vspace*{1.5cm}
   \begin{tikzpicture}[remember picture, overlay]
@@ -341,7 +344,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
             \begin{tabular}[b]{@{}l@{}} 
                 \textbf{\footnotesize \textcolor{myblue}{Laboratório de Processamento de Sinais - LPS/COPPE}} \\ 
                 \textbf{\footnotesize \textcolor{myblue}{Universidade Federal do Rio de Janeiro}} \\
-                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \number\day\ de \local@monthname\ de \number\year}}
+                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \local@date}}
             \end{tabular}
         \end{tabular}
     };
@@ -354,7 +357,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \vspace*{7mm}
   \end{center}\par
   
-  \noindent Este relatório foi desenvolvido em regime de colaboração técnico-científica entre os seguintes laboratórios:
+  \noindent \labcollaborationtext
   \vspace{1cm}
   
   \begin{center}
@@ -386,7 +389,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \renewcommand{\tabularxcolumn}[1]{m{##1}}
     \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}X|>{\centering\arraybackslash}m{5cm}|}
       \hline
-      \textbf{Nome do Laboratório} & \textbf{Logomarca} \\ \hline
+      \textbf{\labnametext} & \textbf{\logotext} \\ \hline
       \lablogorows
     \end{tabularx}
     \endgroup
@@ -412,7 +415,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
             \begin{tabular}[b]{@{}l@{}} 
                 \textbf{\footnotesize \textcolor{myblue}{Laboratório de Processamento de Sinais - LPS/COPPE}} \\ 
                 \textbf{\footnotesize \textcolor{myblue}{Universidade Federal do Rio de Janeiro}} \\
-                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \number\day\ de \local@monthname\ de \number\year}}
+                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \local@date}}
             \end{tabular}
         \end{tabular}
     };
@@ -426,13 +429,13 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \end{center}\par
   \vspace*{1.5cm}
   
-  \noindent \textbf{\Large Histórico de Revisões}
+  \noindent \textbf{\Large \revisionhistorytitle}
   \vspace{1cm}
   
   \noindent
   \begin{tabularx}{\textwidth}{|c|X|}
     \hline
-    \textbf{Versão} & \multicolumn{1}{c|}{\textbf{Descrição}} \\
+    \textbf{\versiontext} & \multicolumn{1}{c|}{\textbf{\descriptiontext}} \\
     \hline
     \the\copperevisiontoks
   \end{tabularx}
@@ -455,7 +458,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
             \begin{tabular}[b]{@{}l@{}} 
                 \textbf{\footnotesize \textcolor{myblue}{Laboratório de Processamento de Sinais - LPS/COPPE}} \\ 
                 \textbf{\footnotesize \textcolor{myblue}{Universidade Federal do Rio de Janeiro}} \\
-                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \number\day\ de \local@monthname\ de \number\year}}
+                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \local@date}}
             \end{tabular}
         \end{tabular}
     };
@@ -487,7 +490,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \do@authloop
 
   \begin{tabularx}{\textwidth}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
-    \textbf{Autores:} & \authrows
+    \textbf{\authorstext} & \authrows
   \end{tabularx}
   \begin{tikzpicture}[remember picture, overlay]
     \path (current page.east) ++(-1.5cm, 0) node[rotate=90, font=\large] {\MakeUppercase{Universidade Federal do Rio de Janeiro}};
@@ -508,7 +511,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
             \begin{tabular}[b]{@{}l@{}} 
                 \textbf{\footnotesize \textcolor{myblue}{Laboratório de Processamento de Sinais - LPS/COPPE}} \\ 
                 \textbf{\footnotesize \textcolor{myblue}{Universidade Federal do Rio de Janeiro}} \\
-                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \number\day\ de \local@monthname\ de \number\year}}
+                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \local@date}}
             \end{tabular}
         \end{tabular}
     };
@@ -540,7 +543,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \do@labloop
 
   \begin{tabularx}{\textwidth}[b]{@{}l@{ }>{\raggedright\arraybackslash}X@{}}
-    \textbf{Laboratórios:} & \labrows
+    \textbf{\laboratorieslisttext} & \labrows
   \end{tabularx}
   \begin{tikzpicture}[remember picture, overlay]
     \path (current page.east) ++(-1.5cm, 0) node[rotate=90, font=\large] {\MakeUppercase{Universidade Federal do Rio de Janeiro}};
@@ -604,7 +607,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
             \begin{tabular}[b]{@{}l@{}} 
                 \textbf{\footnotesize \textcolor{myblue}{Laboratório de Processamento de Sinais - LPS/COPPE}} \\ 
                 \textbf{\footnotesize \textcolor{myblue}{Universidade Federal do Rio de Janeiro}} \\
-                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \number\day\ de \local@monthname\ de \number\year}}
+                \textbf{\footnotesize \textcolor{myblue}{\local@cityname, \local@date}}
             \end{tabular}
         \end{tabular}
     };
@@ -615,7 +618,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
     \setlength{\fboxsep}{5mm}
     \framebox[120mm][c]{
       \begin{minipage}[c]{105mm}
-      \noindent Este relatório técnico contém informações sensíveis, metodologias proprietárias e resultados de pesquisa protegidos por cláusulas de sigilo e propriedade intelectual. O acesso a este conteúdo é limitado exclusivamente aos membros autorizados do corpo de avaliação da Petrobras. É terminantemente proibida qualquer forma de cópia, distribuição, citação ou divulgação a indivíduos não autorizados ou instâncias externas, independentemente do meio utilizado. O descumprimento deste aviso sujeitará os responsáveis às sanções legais cabíveis, civis e criminais, conforme previsto na Lei de Propriedade Industrial e nos termos do convênio estabelecido entre as partes.
+      \noindent\input{metadatas/warning_message.tex}
     \end{minipage}
     }
   \end{center}
@@ -931,10 +934,82 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   \newcommand\listabbreviationname{List of Abbreviations}
   \newcommand\listsymbolname{List of Symbols}
   \newcommand\glossaryname{Glossary}
+  \newcommand\local@date{\foreign@monthname\ \number\day, \number\year}
+  \newcommand\coordinatorname{Coordinator}
+  \newcommand\reportcodename{Report code}
+  \newcommand\reportversionname{Report version}
+  \newcommand\coppetecprojectname{Coppetec project number}
+  \newcommand\embrapiiprojectname{Embrapii project number}
+  \newcommand\cooperationtermname{Cooperation Agreement No.}
+  \newcommand\interlocutorname{Interlocutor}
+  \newcommand\projectphasename{Associated phase}
+  \newcommand\projectdurationname{Project duration}
+  \newcommand\finalclientname{Final client}
+  \newcommand\coordinatortitle{Project Coordinator}
+  \newcommand\labcollaborationtext{This report was developed in technical-scientific collaboration between the following laboratories:}
+  \newcommand\labnametext{Laboratory Name}
+  \newcommand\logotext{Logo}
+  \newcommand\revisionhistorytitle{Revision History}
+  \newcommand\versiontext{Version}
+  \newcommand\descriptiontext{Description}
+  \newcommand\authorstext{Authors:}
+  \newcommand\laboratorieslisttext{Laboratories:}
+  \newcommand\editionname{Version}
+  \newcommand\frontpage@maintext{%
+    \noindent TECHNICAL REPORT SUBMITTED TO THE PETROBRAS EVALUATION BOARD AS AN INTEGRAL PART OF THE RESEARCH, DEVELOPMENT, AND INNOVATION ACTIVITIES RELATED TO THE ABOVE-MENTIONED PROJECT.\\
+  }
+  \newcommand\frontpage@bottomtext{%
+    \begin{center}
+    {\MakeUppercase{\local@cityname, \local@statename\ -- \local@countryname}}\par
+    {\MakeUppercase{\foreign@monthname\ \number\year}}
+    \end{center}%
+  }
+  \newcommand\abstract@toptext{%
+    \noindent Summary of the report presented
+  }
+  \newcommand\foreignabstract@toptext{%
+    \noindent Resumo do relatório apresentado
+  }
 \else
   \newcommand\listabbreviationname{Lista de Abreviaturas}
   \newcommand\listsymbolname{Lista de S{\' i}mbolos}
   \newcommand\glossaryname{Gloss{\' a}rio}
+  \newcommand\local@date{\number\day\ de \local@monthname\ de \number\year}
+  \newcommand\coordinatorname{Coordenador}
+  \newcommand\reportcodename{Código do relatório}
+  \newcommand\reportversionname{Versão do relatório}
+  \newcommand\coppetecprojectname{Número do projeto Coppetec}
+  \newcommand\embrapiiprojectname{Número do projeto Embrapii}
+  \newcommand\cooperationtermname{Nº Termo de Cooperação}
+  \newcommand\interlocutorname{Interlocutor}
+  \newcommand\projectphasename{Fase associada}
+  \newcommand\projectdurationname{Duração do projeto}
+  \newcommand\finalclientname{Cliente final}
+  \newcommand\coordinatortitle{Coordenador do Projeto}
+  \newcommand\labcollaborationtext{Este relatório foi desenvolvido em regime de colaboração técnico-científica entre os seguintes laboratórios:}
+  \newcommand\labnametext{Nome do Laboratório}
+  \newcommand\logotext{Logomarca}
+  \newcommand\revisionhistorytitle{Histórico de Revisões}
+  \newcommand\versiontext{Versão}
+  \newcommand\descriptiontext{Descrição}
+  \newcommand\authorstext{Autores:}
+  \newcommand\laboratorieslisttext{Laboratórios:}
+  \newcommand\editionname{Edição}
+  \newcommand\frontpage@maintext{%
+    \noindent RELATÓRIO TÉCNICO SUBMETIDO AO CORPO DE AVALIAÇÃO DA PETROBRAS, COMO PARTE INTEGRANTE DAS ATIVIDADES DE PESQUISA, DESENVOLVIMENTO E INOVAÇÃO REFERENTES AO PROJETO SUPRACITADO. \\
+  }
+  \newcommand\frontpage@bottomtext{%
+    \begin{center}
+    {\MakeUppercase{\local@cityname, \local@statename\ -- \local@countryname}}\par
+    {\MakeUppercase\local@monthname\ DE \number\year}
+    \end{center}%
+  }
+  \newcommand\abstract@toptext{%
+    \noindent Resumo do relatório apresentado
+  }
+  \newcommand\foreignabstract@toptext{%
+    \noindent Resume
+  }
 \fi
 \newcommand\local@advisorstring{Coordenador}
 \newcommand\foreign@advisorstring{Coordinator}
@@ -956,33 +1031,6 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   COPPE, da \local@universityname, como parte dos requisitos
   necess{\' a}rios {\` a} obten{\c c}{\~ a}o do t{\' i}tulo de
   \local@degname\ em \local@deptname.}
-}
-
-
-
-\newcommand\frontpage@maintext{
-  \noindent RELATÓRIO TÉCNICO SUBMETIDO AO CORPO DE AVALIAÇÃO DA PETROBRAS, COMO PARTE INTEGRANTE DAS ATIVIDADES DE PESQUISA, DESENVOLVIMENTO E INOVAÇÃO REFERENTES AO PROJETO SUPRACITADO. \\
-}
-
-
-
-\newcommand\frontpage@bottomtext{%
-  \begin{center}
-  {\MakeUppercase{\local@cityname, \local@statename\ -- \local@countryname}}\par
-  {\MakeUppercase\local@monthname\ DE \number\year}
-  \end{center}%
-}
-
-
-
-\newcommand\abstract@toptext{%
-  \noindent Resumo do relatório apresentado
-}
-
-
-
-\newcommand\foreignabstract@toptext{%
-  \noindent Resume
 }
 
 
